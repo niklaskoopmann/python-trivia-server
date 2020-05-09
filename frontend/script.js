@@ -8,7 +8,7 @@ function populateDropdowns () {
 
   $.(".categories").each(function(i, object) {
     categories.forEach((item, j) => {
-      object.appendChild("<option value="" ")
+      object.appendChild("<option value=" + " ")
     });
   });
 }

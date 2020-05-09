@@ -1,9 +1,10 @@
 #!/usr/bin/env python
 
 import csv
+import json
 from random import randint
 
-from flask import Flask, url_for
+from flask import Flask, jsonify, url_for
 
 __author__ = "niklaskoopmann"
 __version__ = "0.0.1"
@@ -173,7 +174,11 @@ def toys_games():
 
 @app.route("/about/categories")
 def about_categories():
-    return all_categories.__str__()
+    categories_dict = {"categories": []}
+    for c in all_categories:
+        categories_dict["categories"].append(
+            {"internal": c[0], "display": c[1]})
+    return jsonify(categories_dict)
 
 
 if __name__ == "__main__":
