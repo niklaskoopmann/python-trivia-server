@@ -37,7 +37,7 @@ Thanks to u/007craft for publishing their huge set of trivia questions! :wave:
 | Trivial Pursuit (DE)     | python-trivia-server                                |
 |--------------------------|-----------------------------------------------------|
 | Kunst und Literatur      | art-literature, language                            |
-| Geographie               | geography                                           |
+| Erdkunde                 | geography                                           |
 | Sport und Vergnügen      | sports-leisure, food-drink                          |
 | Geschichte               | history-holidays, religion-mythology                |
 | Unterhaltung             | entertainment, music, people-places, toys-games     |
