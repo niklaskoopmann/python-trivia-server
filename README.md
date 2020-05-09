@@ -1,7 +1,9 @@
 # python-trivia-server
+:snake: :question: :outbox_tray:
+
 A basic Flask server to provide random trivia questions from different categories.
-It's still in an early stage but already serves from a CSV database of 45k questions with an endpoint per category.
-Thanks to u/007craft for publishing their huge set of trivia questions!
+It's still work in progress :wrench: at every front but already serves from a CSV database of 45k questions with an endpoint per category.
+Thanks to u/007craft for publishing their huge set of trivia questions! :wave:
 
 ## TO DO
 
@@ -32,7 +34,7 @@ Thanks to u/007craft for publishing their huge set of trivia questions!
 - add comments to script
 
 ## Mapping to Trivial Pursuit categories
-| Trivial Pursuit          | python-trivia-server                                |
+| Trivial Pursuit (DE)     | python-trivia-server                                |
 |--------------------------|-----------------------------------------------------|
 | Kunst und Literatur      | art-literature, language                            |
 | Geographie               | geography                                           |
