@@ -44,118 +44,120 @@ questionsSportsLeisure = []
 questionsTechnologyVideoGames = []
 questionsToysGames = []
 
+def fill_category_question_list()
+
 with open('./questions/art_literature.csv', 'rt', encoding="utf-8") as csvfile:
-    category_name = "Art & Literature"
-    allCategories.append(category_name)
+    category_display_name = "Art & Literature"
+    allCategories.append(category_display_name)
     reader = csv.reader(csvfile, delimiter=";")
     for row in reader:
         questionsArtLiterature.append(
-            Question(row[0], row[1], category_name))
+            Question(row[0], row[1], category_display_name))
 
 with open('./questions/entertainment.csv', 'rt', encoding="utf-8") as csvfile:
-    category_name = "Entertainment"
-    allCategories.append(category_name)
+    category_display_name = "Entertainment"
+    allCategories.append(category_display_name)
     reader = csv.reader(csvfile, delimiter=";")
     for row in reader:
         questionsEntertainment.append(
-            Question(row[0], row[1], category_name))
+            Question(row[0], row[1], category_display_name))
 
 with open('./questions/food_drink.csv', 'rt', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
-    category_name = "Food & Drink"
-    allCategories.append(category_name)
+    category_display_name = "Food & Drink"
+    allCategories.append(category_display_name)
     for row in reader:
-        questionsFoodDrink.append(Question(row[0], row[1], category_name))
+        questionsFoodDrink.append(Question(row[0], row[1], category_display_name))
 
 with open('./questions/general.csv', 'rt', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
-    category_name = "General"
-    allCategories.append(category_name)
+    category_display_name = "General"
+    allCategories.append(category_display_name)
     for row in reader:
-        questionsGeneral.append(Question(row[0], row[1], category_name))
+        questionsGeneral.append(Question(row[0], row[1], category_display_name))
 
 with open('./questions/geography.csv', 'rt', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
-    category_name = "Geography"
-    allCategories.append(category_name)
+    category_display_name = "Geography"
+    allCategories.append(category_display_name)
     for row in reader:
-        questionsGeography.append(Question(row[0], row[1], category_name))
+        questionsGeography.append(Question(row[0], row[1], category_display_name))
 
 with open('./questions/history_holidays.csv', 'rt', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
-    category_name = "History & Holidays"
-    allCategories.append(category_name)
+    category_display_name = "History & Holidays"
+    allCategories.append(category_display_name)
     for row in reader:
         questionsHistoryHolidays.append(
-            Question(row[0], row[1], category_name))
+            Question(row[0], row[1], category_display_name))
 
 with open('./questions/language.csv', 'rt', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
-    category_name = "Language"
-    allCategories.append(category_name)
+    category_display_name = "Language"
+    allCategories.append(category_display_name)
     for row in reader:
-        questionsLanguage.append(Question(row[0], row[1], category_name))
+        questionsLanguage.append(Question(row[0], row[1], category_display_name))
 
 with open('./questions/mathematics.csv', 'rt', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
-    category_name = "Mathematics"
-    allCategories.append(category_name)
+    category_display_name = "Mathematics"
+    allCategories.append(category_display_name)
     for row in reader:
-        questionsMathematics.append(Question(row[0], row[1], category_name))
+        questionsMathematics.append(Question(row[0], row[1], category_display_name))
 
 with open('./questions/music.csv', 'rt', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
-    category_name = "Music"
-    allCategories.append(category_name)
+    category_display_name = "Music"
+    allCategories.append(category_display_name)
     for row in reader:
-        questionsMusic.append(Question(row[0], row[1], category_name))
+        questionsMusic.append(Question(row[0], row[1], category_display_name))
 
 with open('./questions/people_places.csv', 'rt', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
-    category_name = "People & Places"
-    allCategories.append(category_name)
+    category_display_name = "People & Places"
+    allCategories.append(category_display_name)
     for row in reader:
         questionsPeoplePlaces.append(
-            Question(row[0], row[1], category_name))
+            Question(row[0], row[1], category_display_name))
 
 with open('./questions/religion_mythology.csv', 'rt', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
-    category_name = "Religion & Mythology"
-    allCategories.append(category_name)
+    category_display_name = "Religion & Mythology"
+    allCategories.append(category_display_name)
     for row in reader:
         questionsReligionMythology.append(
-            Question(row[0], row[1], category_name))
+            Question(row[0], row[1], category_display_name))
 
 with open('./questions/science_nature.csv', 'rt', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
-    category_name = "Science & Nature"
-    allCategories.append(category_name)
+    category_display_name = "Science & Nature"
+    allCategories.append(category_display_name)
     for row in reader:
         questionsScienceNature.append(
-            Question(row[0], row[1], category_name))
+            Question(row[0], row[1], category_display_name))
 
 with open('./questions/sports_leisure.csv', 'rt', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
-    category_name = "Sports & Leisure"
-    allCategories.append(category_name)
+    category_display_name = "Sports & Leisure"
+    allCategories.append(category_display_name)
     for row in reader:
         questionsSportsLeisure.append(
-            Question(row[0], row[1], category_name))
+            Question(row[0], row[1], category_display_name))
 
 with open('./questions/technology_video_games.csv', 'rt', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
-    category_name = "Technology & Video Games"
-    allCategories.append(category_name)
+    category_display_name = "Technology & Video Games"
+    allCategories.append(category_display_name)
     for row in reader:
         questionsTechnologyVideoGames.append(
-            Question(row[0], row[1], category_name))
+            Question(row[0], row[1], category_display_name))
 
 with open('./questions/toys_games.csv', 'rt', encoding="utf-8") as csvfile:
     reader = csv.reader(csvfile, delimiter=";")
-    category_name = "Toys & Games"
-    allCategories.append(category_name)
+    category_display_name = "Toys & Games"
+    allCategories.append(category_display_name)
     for row in reader:
-        questionsToysGames.append(Question(row[0], row[1], category_name))
+        questionsToysGames.append(Question(row[0], row[1], category_display_name))
 
 totalNumberOfQuestions = len(questionsArtLiterature)
 totalNumberOfQuestions += len(questionsEntertainment)

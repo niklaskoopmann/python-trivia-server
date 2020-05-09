@@ -5,10 +5,14 @@ html {
   --yellowColor: #ffd147;
   --pinkColor: #df77ba;
   --greenColor: #30846a;
+  min-height: 100vh;
+  height: 100%;
 }
 
 body{
   font-family: Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  height: 100%;
 }
 
 h1 {
