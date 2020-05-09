@@ -3,30 +3,50 @@
 <head>
   <title>Choose your categories</title>
   <link rel="stylesheet" href="stylesheet.css">
+  <script src="script.js"></script>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-<body>
+<body onload="populateDropdowns()">
   <h1>Choose your categories</h1>
-  <form action="" method="post">
-    <select class="categories" name="brownCategory">
+  <form action="pickCategory.html" method="post">
+    <select class="categories" id="brownCategory">
       <option value="arts">Arts</option>
     </select>
-    <select class="categories" name="blueCategory">
+
+    <br>
+
+    <select class="categories" id="blueCategory">
       <option value="geography">Geography</option>
     </select>
-    <select class="categories" name="orangeCategory">
+
+    <br>
+
+    <select class="categories" id="orangeCategory">
       <option value="sports">Sports</option>
     </select>
-    <select class="categories" name="yellowCategory">
+
+    <br>
+
+    <select class="categories" id="yellowCategory">
       <option value="history">History</option>
     </select>
-    <select class="categories" name="pinkCategory">
+
+    <br>
+
+    <select class="categories" id="pinkCategory">
       <option value="entertainment">Entertainment</option>
     </select>
-    <select class="categories" name="greenCategory">
+
+    <br>
+
+    <select class="categories" id="greenCategory">
       <option value="science">Science</option>
     </select>
-    <input type="submit" value="Let's Go!">
+
+    <br>
+
+    <input class="button" type="submit" value="Let's Go!">
   </form>
 </body>
 </html>

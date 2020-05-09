@@ -1,3 +1,68 @@
+html {
+  --brownColor: #896752;
+  --blueColor: #45a8db;
+  --orangeColor: #df733f;
+  --yellowColor: #ffd147;
+  --pinkColor: #df77ba;
+  --greenColor: #30846a;
+}
+
+body{
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  margin: 1%;
+}
+
+
+/*chooseCategories*/
+
+.categories {
+  width: 95%;
+  padding: 1%;
+  border: none;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+#brownCategory {
+  background-color: var(--brownColor);
+}
+
+#blueCategory {
+  background-color: var(--blueColor);
+}
+
+#orangeCategory {
+  background-color: var(--orangeColor);
+}
+
+#yellowCategory {
+  background-color: var(--yellowColor);
+}
+
+#pinkCategory {
+  background-color: var(--pinkColor);
+}
+
+#greenCategory {
+  background-color: var(--greenColor);
+}
+
+/*pickCategory*/
+
+#wheel {
+  display: block;
+  margin: 10%;
+}
+
+.categoryDescription {
+  display: block;
+  padding: 10px;
+  margin: 20%;
+}
+
 /*Wedges*/
 .wedge {
 	width: 0;
@@ -6,28 +71,28 @@
 	border-right: 25px solid transparent;
 }
 
-#brownWedge{
-	border-bottom: 50px solid #896752;
+#brownWedge {
+	border-bottom: 50px solid var(--brownColor);
 }
 
-#blueWedge{
-	border-bottom: 50px solid #45a8db;
+#blueWedge {
+	border-bottom: 50px solid var(--blueColor);
 }
 
-#orangeWedge{
-	border-bottom: 50px solid #df733f;
+#orangeWedge {
+	border-bottom: 50px solid var(--orangeColor);
 }
 
-#yellowWedge{
-	border-bottom: 50px solid #ffd147;
+#yellowWedge {
+	border-bottom: 50px solid var(--yellowColor);
 }
 
-#pinkWedge{
-	border-bottom: 50px solid #df77ba;
+#pinkWedge {
+	border-bottom: 50px solid var(--pinkColor);
 }
 
-#greenWedge{
-	border-bottom: 50px solid #30846a;
+#greenWedge {
+	border-bottom: 50px solid var(--greenColor);
 }
 
 /*Colors*/
@@ -35,28 +100,94 @@
   height: 50px;
   width: 50px;
   border-radius: 50%;
+  text-align: center;
 }
 
-#brownColor{
-  background-color: #896752;
+#brownColor {
+  background-color: var(--brownColor);
 }
 
-#blueColor{
-  background-color: #45a8db;
+#blueColor {
+  background-color: var(--blueColor);
 }
 
-#orangeColor{
-  background-color: #df733f;
+#orangeColor {
+  background-color: var(--orangeColor);
 }
 
-#yellowColor{
-  background-color: #ffd147;
+#yellowColor {
+  background-color: var(--yellowColor);
 }
 
-#pinkColor{
-  background-color: #df77ba;
+#pinkColor {
+  background-color: var(--pinkColor);
 }
 
-#greenColor{
-  background-color: #30846a;
+#greenColor {
+  background-color: var(--greenColor);
+}
+
+td {
+  padding: 10px;
+}
+
+/*question*/
+
+.back {
+  display: block;
+  background-color: var(--brownColor);
+  padding: 15px;
+  font-size: 35px;
+  color: white;
+  text-decoration: none;
+}
+
+.questionContainer {
+  display: block;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 55%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/*questionAnswer*/
+.questionAnswer {
+  display: block;
+  margin: 10%;
+  border: 1px solid red;
+}
+
+.questionAnswer h2 {
+  padding: 10px;
+  margin: 0;
+  font-size: 35px;
+  background-color: var(--brownColor);
+  color: white;
+}
+
+.questionAnswer p {
+  max-height: 250px;
+  padding: 15px;
+  overflow: auto;
+}
+
+#questionCard {
+  display: block;
+}
+
+#answerCard {
+  display: none;
+}
+
+/*checkbox*/
+.checkbox {
+  min-width: 100px;
+  padding: 20px;
+  margin: 10px 20%;
+}
+
+.checkbox label{
+  padding-left: 10px;
 }
