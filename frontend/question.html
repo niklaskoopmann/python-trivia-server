@@ -1,35 +1,84 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <title>Your Question</title>
   <link rel="stylesheet" href="stylesheet.css">
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <script src="script.js"></script>
+
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+  <script src="http://code.jquery.com/jquery-latest.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script>
+    function getQuestion(category) {
+      $.get("http://192.168.179.69:42069/" + category).done(function(data, status) {
+        $("#question").html(data)
+      });
+    }
+
+    function changeToAnswer() {
+      $("#questionCard").css("display", "none");
+      $("#answerCard").css("display", "flex");
+    }
+
+    function changeToQuestion() {
+      $("#answerCard").css("display", "none");
+      $("#questionCard").css("display", "flex");
+    }
+  </script>
 </head>
-<body>
-    <a class="back" href="pickCategory.html">Back</a>
 
-    <div class="questionContainer">
-      <div class="questionAnswer" id="questionCard">
-        <h2>Question</h2>
-        <p>Is this a question?Is this a question?Is this a question?Is this a question?</p>
+<body onload="getQuestion('general')" class="row mx-auto">
+  <div class="container">
+    <nav class="navbar fixed-top navbar-dark bg-primary" style="cursor:pointer;" onclick="window.location='pickCategory.html'">
+      <a class="navbar-brand" href="pickCategory.html">
+        &#10094;
+        Back
+      </a>
+    </nav>
+  </div>
+
+  <div class="col-sm-8 mx-auto">
+    <div class="card" id="questionCard" onclick="changeToAnswer()">
+      <div class="card-header">
+        Question
       </div>
-
-      <div class="questionAnswer" id="answerCard">
-        <h2>Answer</h2>
-        <p>Yes!</p>
+      <div class="card-body">
+        <p class="card-text" id="question"></p>
       </div>
-
-      <form class="editQuestion" action="editQuestion.html" method="">
-        <input class="button" type="submit" onclick="editQuestion.html" value="Edit">
-
-        <br>
-
-        <div class="checkbox">
-          <input id="americentric" type="checkbox" value="">
-          <label for="americentric">Mark as americentric</label>
-        </div>
-      </form>
     </div>
+
+    <div class="card" id="answerCard" onclick="changeToQuestion()">
+      <div class="card-header">
+        Answer
+      </div>
+      <div class="card-body">
+        <p class="card-text">Yes!</p>
+      </div>
+    </div>
+
+    <br>
+
+    <form class="group" action="editQuestion.html" method="">
+      <div class="text-center form-group">
+        <input class="btn btn-primary" type="submit" value="Edit">
+      </div>
+
+      <div class="custom-control custom-checkbox text-center form-group">
+        <input class="custom-control-input" type="checkbox" value="" id="americentric">
+        <label class="custom-control-label" for="americentric">
+          Mark as americentric
+        </label>
+      </div>
+    </form>
+  </div>
 </body>
+
 </html>
