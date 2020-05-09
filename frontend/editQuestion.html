@@ -17,7 +17,13 @@
 </head>
 
 <body class="row mx-auto">
-  <form class="col-sm-12 col-lg-8 mx-auto my-auto" action="" method="post">
+  <div class="container">
+    <nav class="navbar fixed-top navbar-dark bg-primary">
+      <span class="navbar-brand mb-0 h1">Edit the question</span>
+    </nav>
+  </div>
+
+  <form class="col-sm-12 col-lg-8 mx-auto" action="" method="post">
 
     <div class="form-group">
       <label for="question">Question</label>
@@ -40,7 +46,8 @@
       <select class="custom-select" name="subcategory" id="subcategory">
       </select>
     </div>
-    <div class="text-center">
+
+    <div class="form-group text-center">
       <input class="btn btn-primary" type="submit" value="Save">
     </div>
 
