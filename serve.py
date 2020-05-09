@@ -6,6 +6,8 @@ from random import randint
 
 from flask import Flask, jsonify, url_for
 
+from flask_cors import CORS
+
 __author__ = "niklaskoopmann"
 __version__ = "0.0.1"
 __status__ = "Development"
@@ -75,6 +77,7 @@ print("")
 print("  Starting Flask server...")
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route("/")
