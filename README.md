@@ -1,4 +1,9 @@
-# TO DO
+# python-trivia-server
+A basic Flask server to provide random trivia questions from different categories.
+It's still in an early stage but already serves from a CSV database of 45k questions with an endpoint per category.
+Thanks to u/007craft for publishing their huge set of trivia questions!
+
+## TO DO
 
 ### Feedback to server
 - implement POST requests
@@ -26,3 +31,12 @@
 ### Documentation
 - add comments to script
 
+## Mapping to Trivial Pursuit categories
+| Trivial Pursuit          | python-trivia-server                                |
+|--------------------------|-----------------------------------------------------|
+| Kunst und Literatur      | art-literature, language                            |
+| Geographie               | geography                                           |
+| Sport und Vergnügen      | sports-leisure, food-drink                          |
+| Geschichte               | history-holidays, religion-mythology                |
+| Unterhaltung             | entertainment, music, people-places, toys-games     |
+| Wissenschaft und Technik | mathematics, science-nature, technology-video-games |
