@@ -1,0 +1,62 @@
+/*Wedges*/
+.wedge {
+	width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+}
+
+#brownWedge{
+	border-bottom: 50px solid #896752;
+}
+
+#blueWedge{
+	border-bottom: 50px solid #45a8db;
+}
+
+#orangeWedge{
+	border-bottom: 50px solid #df733f;
+}
+
+#yellowWedge{
+	border-bottom: 50px solid #ffd147;
+}
+
+#pinkWedge{
+	border-bottom: 50px solid #df77ba;
+}
+
+#greenWedge{
+	border-bottom: 50px solid #30846a;
+}
+
+/*Colors*/
+.color {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+
+#brownColor{
+  background-color: #896752;
+}
+
+#blueColor{
+  background-color: #45a8db;
+}
+
+#orangeColor{
+  background-color: #df733f;
+}
+
+#yellowColor{
+  background-color: #ffd147;
+}
+
+#pinkColor{
+  background-color: #df77ba;
+}
+
+#greenColor{
+  background-color: #30846a;
+}
