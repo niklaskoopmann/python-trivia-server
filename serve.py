@@ -5,11 +5,10 @@ import json
 from random import randint
 
 from flask import Flask, jsonify, url_for
-
 from flask_cors import CORS
 
 __author__ = "niklaskoopmann"
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 __status__ = "Development"
 
 TARGET_PORT = 42069
@@ -26,7 +25,10 @@ class Question:
         self.category = category
 
     def __str__(self):
-        return "Category: " + self.category + "<br>Question: " + self.question + "<br>Answer: " + self.answer
+        question_dict = {"category": self.category,
+                         "question": self.question,
+                         "answer": self.answer}
+        return jsonify(question_dict)
 
 
 print("  Importing questions...")
