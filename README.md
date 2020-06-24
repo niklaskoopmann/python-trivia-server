@@ -7,6 +7,9 @@ Thanks to u/007craft for publishing their huge set of trivia questions! :wave:
 
 ## TO DO
 
+### Backend
+- add IDs to questions
+
 ### Feedback to server
 - implement POST requests
 - features:
@@ -22,7 +25,7 @@ Thanks to u/007craft for publishing their huge set of trivia questions! :wave:
   - find new questions online
     - open trivia database
     - Wer wird Millionär? / Who wants to be a Millionaire?
-- Centralize it in a MySQL database. (Docker?)
+- centralise it in a database (maybe dockerised on Pi)
 
 ### Frontend
 - on start: label wedges with custom categories
