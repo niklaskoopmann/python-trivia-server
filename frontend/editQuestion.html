@@ -16,22 +16,24 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script>
     async function load() {
-      await populateSelect()
-      getQuestion('general')
+      populateSelect().then(getQuestion('general')).catch(e => console.log(e));
     }
-    async function populateSelect() {
-      $.get("http://192.168.179.69:42069/about/categories").done(function(data, status) {
-        data["categories"].forEach(function(item) {
-          $("#category").append('<option value=' + item.internal + '>' + item.display + '</option>');
-        });
+    function populateSelect() {
+      return new Promise(function(resolve, reject) {
+        $.get("http://192.168.179.69:42069/about/categories").done(function(data, status) {
+          data["categories"].forEach(function(item) {
+            $("#category").append('<option value=' + item.internal + '>' + item.display + '</option>');
+          });
+        }).fail(reject());
+        resolve();
       });
     }
 
     function getQuestion(category) {
       $.get("http://192.168.179.69:42069/" + category).done(function(data, status) {
-        console.log(data)
         $("#question").val(data["question"])
         $("#answer").val(data["answer"])
+        $("#category").val(data["category_internal"]).change()
         $("#category").val(data["category_internal"]).change()
       });
     }

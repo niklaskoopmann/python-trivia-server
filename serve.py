@@ -19,13 +19,15 @@ print("Starting server...")
 
 
 class Question:
-    def __init__(self, question, answer, category):
+    def __init__(self, question, answer, category_internal, category_display):
         self.question = question
         self.answer = answer
-        self.category = category
+        self.category_internal = category_internal
+        self.category_display = category_display
 
     def __str__(self):
-        question_dict = {"category": self.category,
+        question_dict = {"category_internal": self.category_internal,
+                         "category_display": self.category_display,
                          "question": self.question,
                          "answer": self.answer}
         return jsonify(question_dict)
@@ -41,7 +43,8 @@ def fill_category_question_list(internal_name, display_name):
     with open("./questions/" + internal_name + ".csv", "rt", encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile, delimiter=";")
         for row in reader:
-            out_list.append(Question(row[0], row[1], display_name))
+            out_list.append(
+                Question(row[0], row[1], internal_name, display_name))
             total_number_of_questions += 1
     return out_list
 
