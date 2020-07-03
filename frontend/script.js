@@ -8,7 +8,7 @@ function populateDropdowns() {
   });
 }
 
-function drawChart(){
+function drawChart() {
   var ctxP = document.getElementById("chart-area").getContext('2d');
   var myPieChart = new Chart(ctxP, {
     type: 'pie',
@@ -16,9 +16,9 @@ function drawChart(){
       labels: ["Brown", "Blue", "Orange", "Yellow", "Pink", "Green"],
       datasets: [{
         data: [1, 1, 1, 1, 1, 1],
-        backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360", "#000000"],
+        backgroundColor: ["#896752", "#45a8db", "#df733f", "#ffd147", "#df77ba", "#30846a"],
         //onClick: [function(){console.log("a")}, function(){console.log("b")}, function(){console.log("c")}, function(){console.log("d")}, function(){console.log("e")}, function(){console.log("f")}]
-        //hoverBackgroundColor: ["#FF5A5E", "#5AD3D1", "#FFC870", "#A8B3C5", "#616774", "#000000"]
+        hoverBackgroundColor: ["#5e3c2a", "#2f5fa7", "#b14d28", "#daa233", "#ae4b7c", "#21695f"]
       }]
     },
     options: {
@@ -28,7 +28,9 @@ function drawChart(){
       },
       legend: {
         position: 'bottom',
-        onClick: null
+        onClick: null,
+        boxWidth: 10,
+        fontSize: 40
       }
     }
   });
