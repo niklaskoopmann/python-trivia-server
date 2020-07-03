@@ -21,7 +21,7 @@
       $.get("http://192.168.179.69:42069/" + category).done(function(data, status) {
         $("#question").html(data["question"])
         $("#answer").html(data["answer"])
-        $("h5").html(data["categoryDisplay"])
+        $("h5").html(data["category_display"])
       });
     }
 

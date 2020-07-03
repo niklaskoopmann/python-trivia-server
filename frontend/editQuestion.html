@@ -15,7 +15,11 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script>
-    function populateSelect() {
+    async function load() {
+      await populateSelect()
+      getQuestion('general')
+    }
+    async function populateSelect() {
       $.get("http://192.168.179.69:42069/about/categories").done(function(data, status) {
         data["categories"].forEach(function(item) {
           $("#category").append('<option value=' + item.internal + '>' + item.display + '</option>');
@@ -25,15 +29,16 @@
 
     function getQuestion(category) {
       $.get("http://192.168.179.69:42069/" + category).done(function(data, status) {
+        console.log(data)
         $("#question").val(data["question"])
         $("#answer").val(data["answer"])
-        $("#category").val(data["categoryInternal"])
+        $("#category").val(data["category_internal"]).change()
       });
     }
   </script>
 </head>
 
-<body onload="populateSelect(); getQuestion('general')" class="row mx-auto">
+<body onload="load()" class="row mx-auto">
   <div class="container">
     <nav class="navbar fixed-top navbar-dark bg-primary">
       <span class="navbar-brand mb-0 h1">Edit the question</span>
