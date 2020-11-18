@@ -2,16 +2,19 @@
 
 import csv
 import json
+import mysql.connector
 from random import randint
 
 from flask import Flask, jsonify, url_for
 from flask_cors import CORS
 
 __author__ = "niklaskoopmann"
-__version__ = "0.0.2"
+__version__ = "0.0.3"
 __status__ = "Development"
 
-TARGET_PORT = 42069
+TARGET_PORT = 60433
+DATABASE_IP = "192.168.2.100"
+
 all_categories = []
 total_number_of_questions = 0
 
@@ -19,23 +22,41 @@ print("Starting server...")
 
 
 class Question:
-    def __init__(self, question, answer, category_internal, category_display):
+    def __init__(self, id, question, answer, category_internal, category_display):
+        self.id = id
         self.question = question
         self.answer = answer
         self.category_internal = category_internal
         self.category_display = category_display
+        # to do: rework population of all_categories
+        if not (category_internal, category_display) in all_categories:
+            all_categories.append((category_internal, category_display))
 
     def __str__(self):
         question_dict = {"category_internal": self.category_internal,
                          "category_display": self.category_display,
                          "question": self.question,
-                         "answer": self.answer}
+                         "answer": self.answer,
+                         "id": self.id}
         return jsonify(question_dict)
 
 
-print("  Importing questions...")
+print("  Connecting to database at", DATABASE_IP)
 
+trivia_database = mysql.connector.connect(
+    host=DATABASE_IP,
+    user="root",
+    passwd="123456",
+    database="trivia_questions",
+    auth_plugin="mysql_native_password"
+)
 
+trivia_db_cursor = trivia_database.cursor(buffered=True)
+
+print("  Database connection established")
+#print("  Importing questions...")
+
+"""
 def fill_category_question_list(internal_name, display_name):
     global total_number_of_questions
     all_categories.append((internal_name, display_name))
@@ -44,11 +65,20 @@ def fill_category_question_list(internal_name, display_name):
         reader = csv.reader(csvfile, delimiter=";")
         for row in reader:
             out_list.append(
-                Question(row[0], row[1], internal_name, display_name))
+                Question(0, row[0], row[1], internal_name, display_name))
             total_number_of_questions += 1
     return out_list
+"""
 
 
+def get_random_question(category_internal, category_display):
+    trivia_db_cursor.execute("SELECT * FROM trivia_questions." +
+                             category_internal + " ORDER BY RAND() LIMIT 1;")
+    question_data_tuple = trivia_db_cursor.fetchone()
+    return Question(question_data_tuple[0], question_data_tuple[1], question_data_tuple[2], category_internal, category_display).__str__()
+
+
+"""
 questions_art_literature = fill_category_question_list(
     "art_literature", "Art & Literature")
 questions_entertainment = fill_category_question_list(
@@ -76,8 +106,9 @@ questions_technology_video_games = fill_category_question_list(
 questions_toys_games = fill_category_question_list(
     "toys_games", "Toys & Games")
 
+"""
 
-print("  Successfully imported", total_number_of_questions, "questions!")
+#print("  Successfully imported", total_number_of_questions, "questions!")
 print("")
 print("  Starting Flask server...")
 
@@ -87,97 +118,83 @@ CORS(app)
 
 @app.route("/")
 def home():
+    # return some api documentation here?
     return "Hello World!"
 
 
 @app.route("/art-literature")
 def art_literature():
-    i = randint(0, len(questions_art_literature))
-    return questions_art_literature[i].__str__()
+    return get_random_question("art_literature", "Art & Literature")
 
 
 @app.route("/entertainment")
 def entertainment():
-    i = randint(0, len(questions_entertainment))
-    return questions_entertainment[i].__str__()
+    return get_random_question("entertainment", "Entertainment")
 
 
 @app.route("/food-drink")
 def food_drink():
-    i = randint(0, len(questions_food_drink))
-    return questions_food_drink[i].__str__()
+    return get_random_question("food_drink", "Food & Drink")
 
 
 @app.route("/general")
 def general():
-    i = randint(0, len(questions_general))
-    return questions_general[i].__str__()
+    return get_random_question("general", "General")
 
 
 @app.route("/geography")
 def geography():
-    i = randint(0, len(questions_geography))
-    return questions_geography[i].__str__()
+    return get_random_question("geography", "Geography")
 
 
 @app.route("/history-holidays")
 def history_holidays():
-    i = randint(0, len(questions_history_holidays))
-    return questions_history_holidays[i].__str__()
+    return get_random_question("history_holidays", "History & Holidays")
 
 
 @app.route("/language")
 def language():
-    i = randint(0, len(questions_language))
-    return questions_language[i].__str__()
+    return get_random_question("language", "Language")
 
 
 @app.route("/mathematics")
 def mathematics():
-    i = randint(0, len(questions_mathematics))
-    return questions_mathematics[i].__str__()
+    return get_random_question("mathematics", "Mathematics")
 
 
 @app.route("/music")
 def music():
-    i = randint(0, len(questions_music))
-    return questions_music[i].__str__()
+    return get_random_question("music", "Music")
 
 
 @app.route("/people-places")
 def people_places():
-    i = randint(0, len(questions_people_places))
-    return questions_people_places[i].__str__()
+    return get_random_question("people_places", "People & Places")
 
 
 @app.route("/religion-mythology")
 def religion_mythology():
-    i = randint(0, len(questions_religion_mythology))
-    return questions_religion_mythology[i].__str__()
+    return get_random_question("religion_mythology", "Religion & Mythology")
 
 
 @app.route("/science-nature")
 def science_nature():
-    i = randint(0, len(questions_science_nature))
-    return questions_science_nature[i].__str__()
+    return get_random_question("science_nature", "Science & Nature")
 
 
 @app.route("/sports-leisure")
 def sports_leisure():
-    i = randint(0, len(questions_sports_leisure))
-    return questions_sports_leisure[i].__str__()
+    return get_random_question("sports_leisure", "Sports & Leisure")
 
 
 @app.route("/technology-video-games")
 def technology_video_games():
-    i = randint(0, len(questions_technology_video_games))
-    return questions_technology_video_games[i].__str__()
+    return get_random_question("technology_video_games", "Technology & Video Games")
 
 
 @app.route("/toys-games")
 def toys_games():
-    i = randint(0, len(questions_toys_games))
-    return questions_toys_games[i].__str__()
+    return get_random_question("toys_games", "Toys & Games")
 
 
 @app.route("/about/categories")
@@ -187,6 +204,18 @@ def about_categories():
         categories_dict["categories"].append(
             {"internal": c[0], "display": c[1]})
     return jsonify(categories_dict)
+
+
+@app.route("/about/stats")
+def about_stats():
+    trivia_db_cursor.execute(
+        "SELECT table_name, table_rows FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'trivia_questions';")
+    cat_stats_list = trivia_db_cursor.fetchall()
+    cat_stats_dict = []
+    for stat in cat_stats_list:
+        cat_stats_dict.append(
+            {"internal_name": stat[0], "question_count": stat[1]})
+    return jsonify(cat_stats_dict)
 
 
 if __name__ == "__main__":
