@@ -5,7 +5,8 @@ import json
 import mysql.connector
 from random import randint
 
-from flask import Flask, jsonify, url_for
+from flask import Flask, jsonify, url_for, request
+from flasgger import Swagger, swag_from
 from flask_cors import CORS
 
 __author__ = "niklaskoopmann"
@@ -31,6 +32,9 @@ class Question:
         # to do: rework population of all_categories
         if not (category_internal, category_display) in all_categories:
             all_categories.append((category_internal, category_display))
+
+    def __init__(self):
+        self
 
     def __str__(self):
         question_dict = {"category_internal": self.category_internal,
@@ -114,6 +118,12 @@ print("  Starting Flask server...")
 
 app = Flask(__name__)
 CORS(app)
+app.config['SWAGGER'] = {
+    'title': 'My API',
+    'uiversion': 3,
+    "specs_route": "/swagger/"
+}
+swagger = Swagger(app)
 
 
 @app.route("/")
@@ -218,6 +228,36 @@ def about_stats():
     return jsonify(cat_stats_dict)
 
 
+@app.route("/update-question", methods = ["POST"])
+def update_question():
+    """
+      post endpoint
+      ---      
+      tags:
+        - Flast Restful APIs
+      parameters:
+        - name: body
+          in: body
+          required: true
+      responses:
+        400:
+          description: Error Request body could not be processed
+        200:
+          description: Question updated              
+      """
+    updated_question = Question()
+    try:
+        updated_question.id = request.json["id"]
+        updated_question.question = request.json["question"]
+        updated_question.category_internal = request.json["category_internal"]
+        updated_question.category_display = request.json["category"]
+        updated_question.answer = request.json["answer"]
+    except:
+        return "Request body could not be processed", 400
+
+    return "Question updated", 200
+
+
 if __name__ == "__main__":
     # app.run(host="0.0.0.0", port=TARGET_PORT)  # serve on local network
-    app.run(port=TARGET_PORT)  # serve on localhost
+    app.run(port=TARGET_PORT, debug=True)  # serve on localhost
